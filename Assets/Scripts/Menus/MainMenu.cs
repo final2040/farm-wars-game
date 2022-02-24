@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
         if (playerNameInput.text.IsNullOrWitheSpace())
         {
-            dialog.Show("Please introduce a name.");
+            dialog.Show("Please introduce a name.", DialogButtons.Ok);
         }
         else
         {
