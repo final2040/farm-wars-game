@@ -499,8 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageText: {fileID: 293189858900342199}
-  okButtons: {fileID: 0}
-  yesNoButtons: {fileID: 0}
+  okButtons: {fileID: 6721186772097190453}
+  yesNoButtons: {fileID: 3647678883121558810}
 --- !u!1 &1516165071989423450
 GameObject:
   m_ObjectHideFlags: 0
