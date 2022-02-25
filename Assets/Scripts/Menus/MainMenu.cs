@@ -7,11 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] TMP_InputField playerNameInput;
     [SerializeField] private Dialog dialog;
-    GameManager gameManager;
+    IMainManager _mainManager;
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
+        _mainManager = MainManager.Instance;
     }
 
     public void OnPlayClicked()
@@ -23,13 +23,13 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            gameManager.PlayerName = playerNameInput.text;
-            gameManager.Play();
+            _mainManager.PlayerName = playerNameInput.text;
+            _mainManager.Play();
         }
     }
 
     public void OnQuitClicked()
     {
-        gameManager.Quit();
+        _mainManager.Quit();
     }
 }

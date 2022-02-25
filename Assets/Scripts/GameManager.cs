@@ -4,26 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    public string PlayerName { get; set; }
-
-    void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-
-        Instance = this;
+        
     }
 
-    public void Play()
+    // Update is called once per frame
+    void Update()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public void Quit()
-    {
-        throw new System.NotImplementedException();
+        
     }
 }

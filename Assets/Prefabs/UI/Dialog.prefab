@@ -795,7 +795,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 293189859708163340}
         m_TargetAssemblyTypeName: Dialog, Assembly-CSharp
-        m_MethodName: OnOkClicked
+        m_MethodName: OnYesClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1062,7 +1062,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 293189859708163340}
         m_TargetAssemblyTypeName: Dialog, Assembly-CSharp
-        m_MethodName: OnOkClicked
+        m_MethodName: OnNoClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
