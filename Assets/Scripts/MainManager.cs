@@ -37,4 +37,9 @@ public class MainManager : MonoBehaviour, IMainManager
 #endif
         Application.Quit();
     }
+
+    public void Attack()
+    {
+
+    }
 }

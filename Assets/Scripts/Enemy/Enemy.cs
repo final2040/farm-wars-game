@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Character
+public class Enemy : Character, IDamageDealer
 {
     [SerializeField] private Character target;
     [SerializeField] private float attackRange;
     [SerializeField] private float strength = 5.0f;
     [SerializeField] private float swingTime = 0.5f;
+    [SerializeField] private float knockBackForce;
     private float lastAttack = 0;
+
+    public Vector3 CurrentPosition => transform.position;
+    public float KnockbackForce => knockBackForce;
 
 
     protected override void Update()
@@ -32,8 +34,7 @@ public class Enemy : Character
     {
         if (lastAttack > swingTime)
         {
-            var direction = target.transform.position - transform.position;
-            target.ReceiveDamage(strength, direction);
+            target.ReceiveDamage(strength, this);
             lastAttack = 0;
         }
     }
@@ -44,4 +45,10 @@ public class Enemy : Character
         var distance = Vector3.Distance(transform.position, target.transform.position);
         return distance < attackRange;
     }
+
+    public void SetTarget(Character target)
+    {
+        this.target = target;
+    }
+
 }
