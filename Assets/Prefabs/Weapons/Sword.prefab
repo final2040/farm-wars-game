@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPower: 3
   attackTime: 0.5
-  weaponKnockBack: 50
+  weaponKnockBack: 15
 --- !u!65 &2819078314699051174
 BoxCollider:
   m_ObjectHideFlags: 0

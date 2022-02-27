@@ -67,7 +67,7 @@ MonoBehaviour:
   attackRange: 1.3
   strength: 5
   swingTime: 0.5
-  knockBackForce: 50
+  knockBackForce: 10
 --- !u!65 &4345276284330021673
 BoxCollider:
   m_ObjectHideFlags: 0

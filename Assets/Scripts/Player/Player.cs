@@ -30,7 +30,7 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        
     }
 
     public virtual void ReceiveDamage(float ammount, IDamageDealer damageDealer)
@@ -52,11 +52,8 @@ public abstract class Character : MonoBehaviour
 public class Player : Character
 {
     [SerializeField] private Sword weapon;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+    [SerializeField] private Camera gameCamera;
+    private Vector3 mouseWorldPosition;
 
 
     public Sword Weapon
@@ -67,17 +64,20 @@ public class Player : Character
 
     protected override void Update()
     {
-        var horizontalAxis = Input.GetAxis(mainManager.Controls.HorizontalAxis);
-        var verticalAxis = Input.GetAxis(mainManager.Controls.VerticalAxis);
+        HandleMovement();
+        HandleAttack();
+        HandlePlayerFacingRotation();
+    }
 
+    private void HandlePlayerFacingRotation()
+    {
+        mouseWorldPosition = gameCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+            gameCamera.transform.position.y));
+        transform.LookAt(mouseWorldPosition);
+    }
 
-        if (horizontalAxis != 0 || verticalAxis != 0)
-        {
-            myRigidbody.velocity = (Vector3.right * horizontalAxis * speed) + (Vector3.forward * verticalAxis * speed);
-            
-        }
-        
-
+    private void HandleAttack()
+    {
         if (Input.GetKeyDown(mainManager.Controls.Attack))
         {
             if (Weapon.CanAttack)
@@ -85,6 +85,22 @@ public class Player : Character
                 Weapon.Attack();
             }
         }
+    }
 
+    private void HandleMovement()
+    {
+        var horizontalAxis = Input.GetAxis(mainManager.Controls.HorizontalAxis);
+        var verticalAxis = Input.GetAxis(mainManager.Controls.VerticalAxis);
+
+
+        if (horizontalAxis != 0 || verticalAxis != 0)
+        {
+            myRigidbody.velocity = (Vector3.right * horizontalAxis * speed) + (Vector3.forward * verticalAxis * speed);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(mouseWorldPosition, 1);
     }
 }
