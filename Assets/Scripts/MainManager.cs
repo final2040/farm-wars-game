@@ -27,7 +27,7 @@ public class MainManager : MonoBehaviour, IMainManager
 
     public void Play()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(Constants.GameScene);
     }
 
     public void Quit()
@@ -38,8 +38,8 @@ public class MainManager : MonoBehaviour, IMainManager
         Application.Quit();
     }
 
-    public void Attack()
+    public void MainMenu()
     {
-
+        SceneManager.LoadScene(Constants.MainMenuScene);
     }
 }

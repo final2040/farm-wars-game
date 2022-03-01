@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class Sword : MonoBehaviour, IDamageDealer
+public class Weapon : MonoBehaviour, IDamageDealer
 {
-    [SerializeField] private float attackPower = 3;
+    [SerializeField] private int attackPower = 3;
     [SerializeField] private float attackTime = 1f;
     [SerializeField] private float weaponKnockBack = 10;
     private float cooldown;

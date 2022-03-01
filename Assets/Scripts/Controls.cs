@@ -14,4 +14,5 @@ public struct Controls
     public string VerticalAxis => verticalAxis;
 
     public KeyCode Attack => attack;
+    public KeyCode Pause => pause;
 }

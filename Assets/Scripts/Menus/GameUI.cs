@@ -8,9 +8,20 @@ public class GameUI : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lifeText;
-    [SerializeField] private TextMeshProUGUI weaponText;
+
+    
 
     public PauseMenu PauseMenu => pauseMenu;
 
+    public string Life
+    {
+        get => lifeText.text;
+        set => lifeText.text = value;
+    }
 
+    public string Score
+    {
+        get => scoreText.text;
+        set => scoreText.text = value;
+    }
 }

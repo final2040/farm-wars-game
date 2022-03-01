@@ -4,4 +4,5 @@ public interface IMainManager
     string PlayerName { get; set; }
     void Play();
     void Quit();
+    void MainMenu();
 }
