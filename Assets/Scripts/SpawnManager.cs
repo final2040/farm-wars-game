@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    private const int SpawnOffset = 3;
     [SerializeField] private DamageIndicator damageIndicatorPrefab;
     [SerializeField] private Enemy[] enemies;
 
@@ -45,18 +46,18 @@ public class SpawnManager : MonoBehaviour
             {
                 case 1:
                     x = Random.Range(MainCamera.Instance.VisibleCoordinates.Right, MainCamera.Instance.VisibleCoordinates.Left);
-                    z = MainCamera.Instance.VisibleCoordinates.Top + 3;
+                    z = MainCamera.Instance.VisibleCoordinates.Top + SpawnOffset;
                     break;
                 case 2:
                     x = Random.Range(MainCamera.Instance.VisibleCoordinates.Right, MainCamera.Instance.VisibleCoordinates.Left);
-                    z = MainCamera.Instance.VisibleCoordinates.Bottom - 3;
+                    z = MainCamera.Instance.VisibleCoordinates.Bottom - SpawnOffset;
                     break;
-                case 3:
-                    x = MainCamera.Instance.VisibleCoordinates.Left - 3;
+                case SpawnOffset:
+                    x = MainCamera.Instance.VisibleCoordinates.Left - SpawnOffset;
                     z = Random.Range(MainCamera.Instance.VisibleCoordinates.Top, MainCamera.Instance.VisibleCoordinates.Bottom);
                     break;
                 case 4:
-                    x = MainCamera.Instance.VisibleCoordinates.Left + 3;
+                    x = MainCamera.Instance.VisibleCoordinates.Left + SpawnOffset;
                     z = Random.Range(MainCamera.Instance.VisibleCoordinates.Top, MainCamera.Instance.VisibleCoordinates.Bottom);
                     break;
             }

@@ -8,6 +8,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lifeText;
+    [SerializeField] private TextMeshProUGUI waveText;
 
     
 
@@ -24,4 +25,12 @@ public class GameUI : MonoBehaviour
         get => scoreText.text;
         set => scoreText.text = value;
     }
+
+    public string Wave
+    {
+        get => waveText.text;
+        set => waveText.text = value;
+    }
+
+    
 }

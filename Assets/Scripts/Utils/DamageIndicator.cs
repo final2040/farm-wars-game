@@ -21,7 +21,6 @@ public class DamageIndicator : MonoBehaviour
         {
             transform.position = target.transform.position + positionOffset;
         }
-        Debug.Log(target);
     }
 
     public void Show(GameObject target, int damage)

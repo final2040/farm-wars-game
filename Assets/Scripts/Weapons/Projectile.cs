@@ -32,8 +32,6 @@ public class Projectile : MonoBehaviour, IDamageDealer
         {
             Destroy(gameObject);
         }
-
-        Debug.Log(Camera.main.WorldToScreenPoint(transform.position));
     }
 
     private void OnTriggerEnter(Collider other)

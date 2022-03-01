@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private IMainManager mainManager;
     private bool isPaused;
     private int score;
+    private int currentWave;
 
     public static GameManager Instance { get; private set; }
 
@@ -39,7 +40,9 @@ public class GameManager : MonoBehaviour
 
         if (!FindObjectsOfType<Enemy>().Any())
         {
-            SpawnManager.Create.EnemyWave(4, player);
+            currentWave++;
+            SpawnManager.Create.EnemyWave(currentWave, player);
+            ui.Wave = string.Format(Constants.WaveText, currentWave);
         }
     }
 
@@ -95,5 +98,10 @@ public class GameManager : MonoBehaviour
     private void UpdateScore()
     {
         ui.Score = string.Format(Constants.ScoreText, score);
+    }
+
+    public void GameOver()
+    {
+        throw new System.NotImplementedException();
     }
 }

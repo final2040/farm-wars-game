@@ -105,7 +105,6 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
     {
         var positionDiference = transform.position - damageDealer.CurrentPosition;
         var knockBackDirection = new Vector3(positionDiference.x, 0, positionDiference.z).normalized;
-        Debug.Log(knockBackDirection);
         myRigidbody.AddForce(knockBackDirection * damageDealer.KnockbackForce, ForceMode.Impulse);
     }
 

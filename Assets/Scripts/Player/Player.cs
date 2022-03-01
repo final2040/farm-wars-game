@@ -64,7 +64,7 @@ public class Player : Character
 
     protected override void Die()
     {
-        throw new System.NotImplementedException();
+        GameManager.Instance.GameOver();
     }
 
     private void UpdateUiLife()
