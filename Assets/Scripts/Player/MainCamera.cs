@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class MainCamera : MonoBehaviour
 {
     [SerializeField] private GameObject target;
     [SerializeField] private float verticalLimit = 50;

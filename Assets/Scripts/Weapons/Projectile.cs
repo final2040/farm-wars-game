@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour, IDamageDealer
         targetPosition = projectileFireParams.Position;
         damage = projectileFireParams.Damage;
         knockback = projectileFireParams.KnockbackForce;
-        transform.LookAt(new Vector3(targetPosition.x, 2, targetPosition.z));
+        transform.LookAt(new Vector3(targetPosition.x, 1, targetPosition.z));
         isFired = true;
     }
 
@@ -27,6 +27,13 @@ public class Projectile : MonoBehaviour, IDamageDealer
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
+
+        if (!GameManager.Instance.WorldBounds.Contains(transform.position))
+        {
+            Destroy(gameObject);
+        }
+
+        Debug.Log(Camera.main.WorldToScreenPoint(transform.position));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,9 +44,11 @@ public class Projectile : MonoBehaviour, IDamageDealer
             target.ReceiveDamage(damage, this);
             Destroy(gameObject);
         }
+
+        
     }
 
-
+    
     public float KnockbackForce => knockback;
 
     public Vector3 CurrentPosition => transform.position;

@@ -22,7 +22,7 @@ public class Enemy : Character, IDamageDealer
             FollowTarget();
             Attack();
             transform.LookAt(target.transform.position);
-            lastAttack += Time.deltaTime;
+            lastAttack -= Time.deltaTime;
         }
     }
 
@@ -37,10 +37,10 @@ public class Enemy : Character, IDamageDealer
 
     private void Attack()
     {
-        if (lastAttack > swingTime && TargetIsInRange())
+        if (lastAttack <= 0 && TargetIsInRange())
         {
             ApplyDamage();
-            lastAttack = 0;
+            lastAttack = swingTime;
         }
     }
 

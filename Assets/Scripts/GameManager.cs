@@ -4,12 +4,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameUI ui;
+    [SerializeField] private Bounds worldBounds;
 
     private IMainManager mainManager;
     private bool isPaused;
     private int score;
 
     public static GameManager Instance { get; private set; }
+
+    public Bounds WorldBounds => worldBounds;
 
     void Awake()
     {

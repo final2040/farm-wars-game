@@ -2084,6 +2084,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1046163466}
+    - target: {fileID: 2955196397728228811, guid: 073af1995d141ce47bb0a93446b4d25f, type: 3}
+      propertyPath: swingTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4831646757120492784, guid: 073af1995d141ce47bb0a93446b4d25f, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2371,7 +2375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 293189859708163341, guid: 1814606835f2f8145afaabab81a36bbb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 293189859708163341, guid: 1814606835f2f8145afaabab81a36bbb, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2611,6 +2615,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 425534714}
+  worldBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 50, y: 50, z: 50}
 --- !u!4 &1965788794
 Transform:
   m_ObjectHideFlags: 0
