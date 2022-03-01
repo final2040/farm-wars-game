@@ -1926,6 +1926,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageIndicatorPrefab: {fileID: 8806435689494455150, guid: ab07f495623f81d438b6f8babda765d6, type: 3}
+  enemies:
+  - {fileID: 1083770536, guid: 59766ec44d5358d41bd52ebce16967bd, type: 3}
+  - {fileID: 8681387126185214152, guid: ec6611cae0435e4468beab17ceffe97d, type: 3}
+  - {fileID: 2955196397728228811, guid: 073af1995d141ce47bb0a93446b4d25f, type: 3}
+  - {fileID: 804981671780793379, guid: 25b5fd23e00088e45b05b05a6a56f364, type: 3}
 --- !u!4 &1359932293
 Transform:
   m_ObjectHideFlags: 0
@@ -2244,6 +2249,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1046163469}
     m_Modifications:
+    - target: {fileID: 1663158482703991059, guid: 76d365494d66b9642922aad53ba3a345, type: 3}
+      propertyPath: attackPower
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7359683884633581416, guid: 76d365494d66b9642922aad53ba3a345, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -2618,6 +2627,7 @@ MonoBehaviour:
   worldBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 50, y: 50, z: 50}
+  player: {fileID: 1046163466}
 --- !u!4 &1965788794
 Transform:
   m_ObjectHideFlags: 0

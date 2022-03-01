@@ -1,10 +1,13 @@
 
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameUI ui;
     [SerializeField] private Bounds worldBounds;
+    [SerializeField] private Player player;
+
 
     private IMainManager mainManager;
     private bool isPaused;
@@ -32,6 +35,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(mainManager.Controls.Pause))
         {
             PauseResume();
+        }
+
+        if (!FindObjectsOfType<Enemy>().Any())
+        {
+            SpawnManager.Create.EnemyWave(4, player);
         }
     }
 

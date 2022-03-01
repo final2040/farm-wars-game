@@ -18,8 +18,9 @@ public class DamageIndicator : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            transform.position = new Vector3(target.transform.position.x, 3, target.transform.position.z + 1.5f);
         }
+        Debug.Log(target);
     }
 
     public void Show(GameObject target, int damage)

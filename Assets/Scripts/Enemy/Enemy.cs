@@ -10,6 +10,7 @@ public class Enemy : Character, IDamageDealer
     [SerializeField] protected int pointsValue;
 
     private float lastAttack = 0;
+    private bool isActive = false;
 
     public Vector3 CurrentPosition => transform.position;
     public float KnockbackForce => knockBackForce;
@@ -17,7 +18,7 @@ public class Enemy : Character, IDamageDealer
 
     protected override void OnUpdate()
     {
-        if (IsAlive)
+        if (IsAlive && isActive)
         {
             FollowTarget();
             Attack();
@@ -66,6 +67,7 @@ public class Enemy : Character, IDamageDealer
     public void SetTarget(Character target)
     {
         this.target = target;
+        isActive = true;
     }
 
 }
