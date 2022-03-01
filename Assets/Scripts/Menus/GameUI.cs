@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private GameOverMenu gameOverMenu;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI lifeText;
     [SerializeField] private TextMeshProUGUI waveText;
@@ -13,6 +14,7 @@ public class GameUI : MonoBehaviour
     
 
     public PauseMenu PauseMenu => pauseMenu;
+    public GameOverMenu GameOverMenu => gameOverMenu;
 
     public string Life
     {

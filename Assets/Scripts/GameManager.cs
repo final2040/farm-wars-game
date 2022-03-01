@@ -25,10 +25,25 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         mainManager = MainManager.Instance;
-        ui.PauseMenu.OnMainMenu += PauseMenu_OnMainMenu;
-        ui.PauseMenu.OnQuit += PauseMenu_OnQuit;
-        ui.PauseMenu.OnResume += PauseMenu_OnResume;
+        SubscribeUIEvents();
         UpdateScore();
+    }
+
+    private void SubscribeUIEvents()
+    {
+        ui.PauseMenu.OnMainMenu += UI_OnMainMenu;
+        ui.PauseMenu.OnQuit += UI_OnQuit;
+        ui.PauseMenu.OnResume += PauseMenu_OnResume;
+        ui.PauseMenu.OnRestart += UI_OnRestart;
+
+        ui.GameOverMenu.OnMainMenu += UI_OnMainMenu;
+        ui.GameOverMenu.OnQuit += UI_OnQuit;
+        ui.GameOverMenu.OnRestart += UI_OnRestart;
+    }
+
+    private void UI_OnRestart()
+    {
+        mainManager.Play();
     }
 
     void Update()
@@ -73,13 +88,13 @@ public class GameManager : MonoBehaviour
         Resume();
     }
 
-    private void PauseMenu_OnQuit()
+    private void UI_OnQuit()
     {
 
         mainManager.Quit();
     }
 
-    private void PauseMenu_OnMainMenu()
+    private void UI_OnMainMenu()
     {
         mainManager.MainMenu();
     }
