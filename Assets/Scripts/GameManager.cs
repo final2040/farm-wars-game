@@ -1,23 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private const string LifePropertyName = "Life";
-    [SerializeField] private Player player;
     [SerializeField] private GameUI ui;
+
     private IMainManager mainManager;
     private bool isPaused;
-    
+    private int score;
+
+    public static GameManager Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         mainManager = MainManager.Instance;
-        player.PropertyChanged += Player_PropertyChanged;
         ui.PauseMenu.OnMainMenu += PauseMenu_OnMainMenu;
         ui.PauseMenu.OnQuit += PauseMenu_OnQuit;
         ui.PauseMenu.OnResume += PauseMenu_OnResume;
+        UpdateScore();
     }
 
     void Update()
@@ -66,12 +71,19 @@ public class GameManager : MonoBehaviour
         mainManager.MainMenu();
     }
 
-    private void Player_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    public void UpdatePlayerLife(int currentLife, int maxLife)
     {
-        if (e.PropertyName == LifePropertyName)
-        {
-            ui.Life = string.Format(Constants.LiveTextFormat, player.Life);
-        }
+        ui.Life = string.Format(Constants.LifeText, currentLife, maxLife);
     }
 
+    public void AddScore(int points)
+    {
+        score += points;
+        UpdateScore();
+    }
+
+    private void UpdateScore()
+    {
+        ui.Score = string.Format(Constants.ScoreText, score);
+    }
 }

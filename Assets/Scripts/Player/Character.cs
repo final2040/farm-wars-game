@@ -62,22 +62,29 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
         set => speed = value;
     }
 
-    protected virtual void Awake()
+    protected void Awake()
     {
-
+        OnAwake();
     }
 
-    protected virtual void Start()
+    protected void Start()
     {
         mainManager = MainManager.Instance;
         myRigidbody = GetComponent<Rigidbody>();
         life = maxLife;
+        OnStart();
     }
 
-    protected virtual void Update()
+    protected void Update()
     {
-
+        OnUpdate();
     }
+
+    protected virtual void OnAwake() { }
+
+    protected virtual void OnStart() { }
+
+    protected virtual void OnUpdate() { }
 
     public virtual void ReceiveDamage(int ammount, IDamageDealer damageDealer)
     {
@@ -87,8 +94,12 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
             ApplyKnockBack(damageDealer);
             SpawnManager.Create.DamageIndicator().Show(gameObject, ammount);
         }
-        
+
+        OnReceiveDamage();
     }
+
+    protected virtual void OnReceiveDamage() { }
+
 
     private void ApplyKnockBack(IDamageDealer damageDealer)
     {

@@ -15,12 +15,17 @@ public class Player : Character
         set => weapon = value;
     }
 
+    protected override void OnStart()
+    {
+        UpdateUiLife();
+    }
+
     protected override void Die()
     {
         throw new System.NotImplementedException();
     }
 
-    protected override void Update()
+    protected override void OnUpdate()
     {
         HandleMovement();
         HandleAttack();
@@ -55,6 +60,16 @@ public class Player : Character
         {
             myRigidbody.velocity = (Vector3.right * horizontalAxis * speed) + (Vector3.forward * verticalAxis * speed);
         }
+    }
+
+    protected override void OnReceiveDamage()
+    {
+        UpdateUiLife();
+    }
+
+    private void UpdateUiLife()
+    {
+        GameManager.Instance.UpdatePlayerLife(life, maxLife);
     }
 
     void OnDrawGizmosSelected()

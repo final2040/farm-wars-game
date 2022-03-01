@@ -7,6 +7,8 @@ public class Enemy : Character, IDamageDealer
     [SerializeField] private int strength = 5;
     [SerializeField] private float swingTime = 0.5f;
     [SerializeField] private float knockBackForce;
+    [SerializeField] private int pointsValue;
+
     private float lastAttack = 0;
 
     public Vector3 CurrentPosition => transform.position;
@@ -15,17 +17,17 @@ public class Enemy : Character, IDamageDealer
 
     protected override void Die()
     {
+        GameManager.Instance.AddScore(pointsValue);
         Destroy(gameObject);
     }
 
-    protected override void Update()
+    protected override void OnUpdate()
     {
         if (IsAlive)
         {
             FollowTarget();
             Attack();
             transform.LookAt(target.transform.position);
-
             lastAttack += Time.deltaTime;
         }
     }
