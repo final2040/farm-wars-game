@@ -7,6 +7,7 @@ public class DamageIndicator : MonoBehaviour
 {
     [SerializeField] private TextMeshPro text;
     [SerializeField] private GameObject target;
+    [SerializeField] private Vector3 positionOffset;
     private Animator animator;
 
     private void Awake()
@@ -18,7 +19,7 @@ public class DamageIndicator : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = new Vector3(target.transform.position.x, 3, target.transform.position.z + 1.5f);
+            transform.position = target.transform.position + positionOffset;
         }
         Debug.Log(target);
     }
