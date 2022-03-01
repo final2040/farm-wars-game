@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private const string LifePropertyName = "Life";
     [SerializeField] private GameUI ui;
 
     private IMainManager mainManager;

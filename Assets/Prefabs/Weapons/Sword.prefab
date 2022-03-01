@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14a888e474154647bcbefca8fe128cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 3
+  attackPower: 5
   attackTime: 0.5
   weaponKnockBack: 15
 --- !u!65 &2819078314699051174

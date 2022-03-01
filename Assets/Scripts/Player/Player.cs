@@ -20,9 +20,9 @@ public class Player : Character
         UpdateUiLife();
     }
 
-    protected override void Die()
+    protected override void OnReceiveDamage()
     {
-        throw new System.NotImplementedException();
+        UpdateUiLife();
     }
 
     protected override void OnUpdate()
@@ -30,24 +30,6 @@ public class Player : Character
         HandleMovement();
         HandleAttack();
         HandlePlayerFacingRotation();
-    }
-
-    private void HandlePlayerFacingRotation()
-    {
-        mouseWorldPosition = gameCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
-            gameCamera.transform.position.y));
-        transform.LookAt(mouseWorldPosition);
-    }
-
-    private void HandleAttack()
-    {
-        if (Input.GetKeyDown(mainManager.Controls.Attack))
-        {
-            if (Weapon.CanAttack)
-            {
-                Weapon.Attack();
-            }
-        }
     }
 
     private void HandleMovement()
@@ -62,9 +44,27 @@ public class Player : Character
         }
     }
 
-    protected override void OnReceiveDamage()
+    private void HandleAttack()
     {
-        UpdateUiLife();
+        if (Input.GetKeyDown(mainManager.Controls.Attack))
+        {
+            if (Weapon.CanAttack)
+            {
+                Weapon.Attack();
+            }
+        }
+    }
+
+    private void HandlePlayerFacingRotation()
+    {
+        mouseWorldPosition = gameCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+            gameCamera.transform.position.y));
+        transform.LookAt(mouseWorldPosition);
+    }
+
+    protected override void Die()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void UpdateUiLife()

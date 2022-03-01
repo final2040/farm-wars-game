@@ -2,24 +2,18 @@ using UnityEngine;
 
 public class Enemy : Character, IDamageDealer
 {
-    [SerializeField] private Character target;
-    [SerializeField] private float attackRange;
-    [SerializeField] private int strength = 5;
-    [SerializeField] private float swingTime = 0.5f;
-    [SerializeField] private float knockBackForce;
-    [SerializeField] private int pointsValue;
+    [SerializeField] protected Character target;
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected int strength = 5;
+    [SerializeField] protected float swingTime = 0.5f;
+    [SerializeField] protected float knockBackForce;
+    [SerializeField] protected int pointsValue;
 
     private float lastAttack = 0;
 
     public Vector3 CurrentPosition => transform.position;
     public float KnockbackForce => knockBackForce;
 
-
-    protected override void Die()
-    {
-        GameManager.Instance.AddScore(pointsValue);
-        Destroy(gameObject);
-    }
 
     protected override void OnUpdate()
     {
@@ -45,9 +39,14 @@ public class Enemy : Character, IDamageDealer
     {
         if (lastAttack > swingTime && TargetIsInRange())
         {
-            target.ReceiveDamage(strength, this);
+            ApplyDamage();
             lastAttack = 0;
         }
+    }
+
+    protected virtual void ApplyDamage()
+    {
+        target.ReceiveDamage(strength, this);
     }
 
 
@@ -56,6 +55,13 @@ public class Enemy : Character, IDamageDealer
         var distance = Vector3.Distance(transform.position, target.transform.position);
         return distance < attackRange;
     }
+
+    protected override void Die()
+    {
+        GameManager.Instance.AddScore(pointsValue);
+        Destroy(gameObject);
+    }
+
 
     public void SetTarget(Character target)
     {
