@@ -1,5 +1,6 @@
 
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -117,6 +118,21 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        throw new System.NotImplementedException();
+        mainManager.ScoreBoard.Add(new PlayerScore(mainManager.PlayerName, currentWave, score));
+        ui.GameOverMenu.BestScores = CreateScoreBoard();
+        ui.GameOverMenu.Show();
+    }
+
+    private string CreateScoreBoard()
+    {
+        var builder = new StringBuilder();
+        builder.AppendLine(string.Format(Constants.ScoreboardText, "Name", "Wave", "Score"));
+        foreach (var playerScore in mainManager.ScoreBoard)
+        {
+            builder.AppendLine(string.Format(Constants.ScoreboardText, playerScore.Name, playerScore.MaxWave,
+                playerScore.Score));
+        }
+
+        return builder.ToString();
     }
 }
