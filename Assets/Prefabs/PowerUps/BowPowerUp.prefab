@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ad444be4ab0e947840c0c756f56628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 3082009497621219256, guid: dd1de3d4dde1fcd439c36985187e71d6, type: 3}
   activationCooldown: 2
+  weapon: {fileID: 3082009497621219256, guid: dd1de3d4dde1fcd439c36985187e71d6, type: 3}
 --- !u!95 &572104657891360171
 Animator:
   serializedVersion: 3
@@ -76,7 +76,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6006496307732214760}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.8922825, y: 1.40974, z: 1}
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ad444be4ab0e947840c0c756f56628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 3082009497621219256, guid: dd1de3d4dde1fcd439c36985187e71d6, type: 3}
   activationCooldown: 2
+  weapon: {fileID: 3082009497621219256, guid: dd1de3d4dde1fcd439c36985187e71d6, type: 3}
 --- !u!1001 &847612912961676293
 PrefabInstance:
   m_ObjectHideFlags: 0

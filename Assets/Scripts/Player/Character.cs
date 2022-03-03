@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class Character : MonoBehaviour, INotifyPropertyChanged
+public abstract class Character : MonoBehaviour
 {
     [SerializeField] protected float speed;
     [SerializeField] private HealtBar healtBar;
@@ -19,7 +19,11 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
     public int MaxLife
     {
         get => maxLife;
-        set => maxLife = value;
+        set
+        {
+            maxLife = value;
+            OnMaxLifeUpdated();
+        }
     }
 
     public int Life
@@ -29,7 +33,6 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
         {
             if (life != value)
             {
-                OnPropertyChanged();
                 UpdateLife(value);
             }
         }
@@ -51,15 +54,16 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
             life = value;
         }
         healtBar?.UpdateBar((float)Life / (float)maxLife);
+        OnLifeUpdated();
     }
-
-    protected abstract void Die();
 
     public float Speed
     {
         get => speed;
         set => speed = value;
     }
+
+    protected abstract void Die();
 
     protected void Awake()
     {
@@ -91,13 +95,18 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
         {
             Life -= ammount;
             ApplyKnockBack(damageDealer);
-            SpawnManager.Create.DamageIndicator().Show(gameObject, ammount);
+            SpawnManager.Create.DamageIndicator().Show(gameObject, ammount, Color.red);
         }
-
-        OnReceiveDamage();
     }
 
-    protected virtual void OnReceiveDamage() { }
+    public virtual void AddLife(int ammount)
+    {
+        life += ammount;
+        SpawnManager.Create.DamageIndicator().Show(gameObject, ammount, Color.green);
+    }
+
+    protected virtual void OnLifeUpdated() { }
+    protected virtual void OnMaxLifeUpdated() { }
 
 
     private void ApplyKnockBack(IDamageDealer damageDealer)
@@ -105,13 +114,5 @@ public abstract class Character : MonoBehaviour, INotifyPropertyChanged
         var positionDiference = transform.position - damageDealer.CurrentPosition;
         var knockBackDirection = new Vector3(positionDiference.x, 0, positionDiference.z).normalized;
         myRigidbody.AddForce(knockBackDirection * damageDealer.KnockbackForce, ForceMode.Impulse);
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

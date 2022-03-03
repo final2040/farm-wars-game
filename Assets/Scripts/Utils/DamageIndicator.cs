@@ -21,8 +21,9 @@ public class DamageIndicator : MonoBehaviour
         }
     }
 
-    public void Show(GameObject target, int damage)
+    public void Show(GameObject target, int damage, Color color)
     {
+        text.color = color;
         this.target = target;
         text.text = damage.ToString();
         animator.SetTrigger("show_trigger");

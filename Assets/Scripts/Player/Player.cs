@@ -5,8 +5,8 @@ public class Player : Character
     [SerializeField] private Weapon weapon;
     [SerializeField] private Camera gameCamera;
     private Vector3 mouseWorldPosition;
-
-
+    
+    
     public Weapon MeleeWeapon
     {
         get => weapon;
@@ -18,7 +18,12 @@ public class Player : Character
         UpdateUiLife();
     }
 
-    protected override void OnReceiveDamage()
+    protected override void OnLifeUpdated()
+    {
+        UpdateUiLife();
+    }
+
+    protected override void OnMaxLifeUpdated()
     {
         UpdateUiLife();
     }
@@ -67,7 +72,7 @@ public class Player : Character
 
     private void UpdateUiLife()
     {
-        GameManager.Instance.UpdatePlayerLife(life, maxLife);
+        GameManager.Instance.UpdatePlayerLife(life, MaxLife);
     }
 
     void OnDrawGizmosSelected()
