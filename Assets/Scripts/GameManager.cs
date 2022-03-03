@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (!FindObjectsOfType<Enemy>().Any())
         {
             currentWave++;
-            SpawnManager.Create.EnemyWave(currentWave, player);
+            SpawnManager.Create.Wave(currentWave, player);
             ui.Wave = string.Format(Constants.WaveText, currentWave);
         }
     }

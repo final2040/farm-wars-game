@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a14a888e474154647bcbefca8fe128cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 25
   attackTime: 1
+  attackPower: 30
   weaponKnockBack: 15
 --- !u!65 &5233988229743865148
 BoxCollider:

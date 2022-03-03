@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   healtBar: {fileID: 5935314242155194313}
-  maxLife: 50
+  maxLife: 75
   target: {fileID: 0}
   attackRange: 7
   strength: 2

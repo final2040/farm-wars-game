@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcc255ae20a870418fedd10e8101dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTime: 1
-  attackPower: 3
+  attackTime: 0.5
+  attackPower: 10
   weaponKnockBack: 10
   projectile: {fileID: 783177409433429366, guid: 4514dc39b8a6d5c40bb319c3c7a6d2ff, type: 3}
 --- !u!1001 &7282845528409945320
