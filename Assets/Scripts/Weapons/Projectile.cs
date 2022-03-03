@@ -3,7 +3,6 @@ using UnityEngine;
 public class Projectile : MonoBehaviour, IDamageDealer
 {
     [SerializeField] private float speed;
-    private Vector3 targetPosition;
     private string targetType;
     private int damage;
     private bool isFired;
@@ -12,10 +11,8 @@ public class Projectile : MonoBehaviour, IDamageDealer
     public void Fire(ProjectileFireParams projectileFireParams, string type)
     {
         targetType = type;
-        targetPosition = projectileFireParams.Position;
         damage = projectileFireParams.Damage;
         knockback = projectileFireParams.KnockbackForce;
-        transform.LookAt(new Vector3(targetPosition.x, 1, targetPosition.z));
         isFired = true;
     }
 

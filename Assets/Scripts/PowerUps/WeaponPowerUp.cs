@@ -41,16 +41,15 @@ public class WeaponPowerUp : MonoBehaviour
 
     private void EquipNewWeapon(Player player)
     {
-        var newWeapon = Instantiate(weapon);
+        var newWeapon = Instantiate(weapon, player.transform.position, player.transform.rotation);
         newWeapon.transform.parent = player.transform;
-        newWeapon.transform.rotation = player.transform.rotation;
-        player.Weapon = newWeapon;
+        player.MeleeWeapon = newWeapon;
     }
 
     private static void DestroyOldWeapon(Player player)
     {
-        var currentWeapon = player.Weapon;
+        var currentWeapon = player.MeleeWeapon;
         Destroy(currentWeapon.gameObject);
-        player.Weapon = null;
+        player.MeleeWeapon = null;
     }
 }

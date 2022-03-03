@@ -7,7 +7,7 @@ public class Player : Character
     private Vector3 mouseWorldPosition;
 
 
-    public Weapon Weapon
+    public Weapon MeleeWeapon
     {
         get => weapon;
         set => weapon = value;
@@ -46,9 +46,9 @@ public class Player : Character
     {
         if (Input.GetKeyDown(mainManager.Controls.Attack))
         {
-            if (Weapon.CanAttack)
+            if (MeleeWeapon.CanAttack)
             {
-                Weapon.Attack();
+                MeleeWeapon.Attack();
             }
         }
     }
