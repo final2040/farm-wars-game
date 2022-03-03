@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(Collider))]
 public class Weapon : MonoBehaviour, IDamageDealer
 {
     [SerializeField] private int attackPower = 3;
@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
     [SerializeField] private float weaponKnockBack = 10;
     private float cooldown;
     private Animator animator;
+    private Collider collider;
     private bool IsAtacking;
 
     public bool CanAttack => cooldown <= 0;
@@ -18,6 +19,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        collider = GetComponent<Collider>();
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
         {
             IsAtacking = true;
             cooldown = attackTime;
+            collider.enabled = true;
             Swing();
         }
     }
@@ -58,6 +61,7 @@ public class Weapon : MonoBehaviour, IDamageDealer
     public void EndAttack()
     {
         IsAtacking = false;
+        collider.enabled = false;
     }
 
    
