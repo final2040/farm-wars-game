@@ -6,7 +6,7 @@ public class IncreaseMaxLifePowerUp : PowerUp
     protected override void Deliver(Player player)
     {
         player.MaxLife += lifeAmmount;
-        player.AddLife(player.MaxLife);
+        player.Heal(player.MaxLife);
         Destroy(gameObject);
     }
 }

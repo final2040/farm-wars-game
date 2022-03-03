@@ -99,9 +99,9 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    public virtual void AddLife(int ammount)
+    public virtual void Heal(int ammount)
     {
-        life += ammount;
+        Life += ammount;
         SpawnManager.Create.DamageIndicator().Show(gameObject, ammount, Color.green);
     }
 
